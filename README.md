@@ -1,5 +1,5 @@
 # SweetDictionary
-This project with;
+This project created with;
 1) Cqrs and mediatR design pattern
 2) RabbitMQ for message queue system
 3) Docker
