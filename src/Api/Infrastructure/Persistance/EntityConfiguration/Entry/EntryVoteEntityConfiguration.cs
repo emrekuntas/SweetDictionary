@@ -20,6 +20,7 @@ public class EntryVoteEntityConfiguration : BaseEntityConfiguration<EntryVote>
 
         builder.HasOne(i => i.CreatedBy)
             .WithMany(i => i.EntryVotes)
-            .HasForeignKey(i => i.CreatedById);
+            .HasForeignKey(i => i.CreatedById)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

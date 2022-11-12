@@ -19,6 +19,7 @@ public class EntryCommentVoteEntityConfiguration : BaseEntityConfiguration<Entry
 
         builder.HasOne(i => i.CreatedBy)
         .WithMany(i => i.EntryCommentVotes)
-        .HasForeignKey(i => i.CreatedById);
+        .HasForeignKey(i => i.CreatedById)
+        .OnDelete(DeleteBehavior.Restrict);
     }
 }

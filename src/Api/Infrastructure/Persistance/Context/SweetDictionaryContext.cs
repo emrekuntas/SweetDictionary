@@ -1,5 +1,8 @@
 ﻿using Api.Core.Domain.Models;
+using Bogus.DataSets;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Polly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,9 +39,10 @@ public class SweetDictionaryContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        //migration olduğunda çalışacak
         if (!optionsBuilder.IsConfigured)
         {
-            var connStr = "Data Source=localhost;Initial Catalog=YoutubeBlazorsozluk;Persist Security Info=True;User ID=sa;Password=Salih123!";
+            var connStr = "Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog=SweetDictionary;Integrated Security=True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False";
             optionsBuilder.UseSqlServer(connStr, opt =>
             {
                 opt.EnableRetryOnFailure();
