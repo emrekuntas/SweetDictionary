@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Application.Interfaces.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistance.Context;
+using Persistance.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +28,10 @@ namespace Persistance.Extentions
             //var seedData = new SeedData();
             //seedData.SeedAsync(configuration).GetAwaiter().GetResult();
 
-            //services.AddScoped<IUserRepository, UserRepository>();
-            //services.AddScoped<IEmailConfirmationRepository, EmailConfirmationRepository>();
-            //services.AddScoped<IEntryRepository, EntryRepository>();
-            //services.AddScoped<IEntryCommentRepository, EntryCommentRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IEmailConfirmationRepository, EmailConfirmationRepository>();
+            services.AddScoped<IEntryRepository, EntryRepository>();
+            services.AddScoped<IEntryCommentRepository, EntryCommentRepository>();
 
             return services;
         }
