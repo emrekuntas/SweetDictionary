@@ -1,6 +1,7 @@
 ﻿using Api.Core.Domain.Models;
 using AutoMapper;
 using Common.Models.Queries;
+using Common.Models.RequestModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,9 @@ namespace Application.Mapping
         public MappingProfile()
         {
             CreateMap<User, LoginUserViewModel>().ReverseMap();
+            CreateMap<User, CreateUserCommand>().ReverseMap();
+            CreateMap<User, UpdateUserCommand>().ReverseMap();
+
         }
 
     }

@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Commends.User
+namespace Application.Features.Commends.User.Login
 {
     public class LoginUserCommandValidator : AbstractValidator<LoginUserCommand>
     {
         public LoginUserCommandValidator()
         {
-            RuleFor(i=>i.EmailAdress).NotNull().EmailAddress(FluentValidation.Validators.EmailValidationMode.AspNetCoreCompatible)
+            RuleFor(i => i.EmailAdress).NotNull().EmailAddress(FluentValidation.Validators.EmailValidationMode.AspNetCoreCompatible)
                   .WithMessage("{PropertyName} not a valid email address");
 
             RuleFor(i => i.Password)

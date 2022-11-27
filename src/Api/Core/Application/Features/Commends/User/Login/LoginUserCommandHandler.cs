@@ -15,7 +15,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Commends.User
+namespace Application.Features.Commends.User.Login
 {
     public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUserViewModel>
     {
@@ -62,11 +62,11 @@ namespace Application.Features.Commends.User
         }
         private string GenerateToken(Claim[] claims)
         {
-            SymmetricSecurityKey key = new (Encoding.UTF8.GetBytes(_configuration["AuthConfig:Secret"]));
-            SigningCredentials creds = new (key, SecurityAlgorithms.HmacSha256);
+            SymmetricSecurityKey key = new(Encoding.UTF8.GetBytes(_configuration["AuthConfig:Secret"]));
+            SigningCredentials creds = new(key, SecurityAlgorithms.HmacSha256);
             DateTime expiry = DateTime.Now.AddDays(10);
 
-            JwtSecurityToken token = new (claims: claims,
+            JwtSecurityToken token = new(claims: claims,
                                              expires: expiry,
                                              signingCredentials: creds,
                                              notBefore: DateTime.Now);
